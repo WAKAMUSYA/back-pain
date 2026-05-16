@@ -118,12 +118,12 @@ export default function SelfCheck() {
           {step !== 'start' && step !== 'result' && (
             <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-200">
               <motion.div 
-                className="h-full bg-sky-500"
-                initial={{ width: 0 }}
+                className="h-full bg-sky-500 origin-left"
+                initial={{ scaleX: 0 }}
                 animate={{ 
-                  width: `${(
+                  scaleX: (
                     ['q1_redflags', 'q2_duration', 'q3_pattern', 'q4_fear', 'q5_goal'].indexOf(step) + 1
-                  ) * 20}%` 
+                  ) / 5 
                 }}
               />
             </div>

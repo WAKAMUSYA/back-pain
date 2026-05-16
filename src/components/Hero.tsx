@@ -1,8 +1,8 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { ChevronRight, ArrowDown } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -26,16 +26,20 @@ const heroImages = [
 
 export default function Hero() {
   const [currentImage, setCurrentImage] = useState(0);
+  const ref = useRef<HTMLElement>(null);
+  const isInView = useInView(ref, { margin: "0px" });
 
   useEffect(() => {
+    if (!isInView) return;
+
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isInView]);
 
   return (
-    <section className="relative overflow-hidden pt-20 pb-20 md:pt-32 md:pb-32 bg-white">
+    <section ref={ref} className="relative overflow-hidden pt-20 pb-20 md:pt-32 md:pb-32 bg-white">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-slate-50/50 rounded-bl-[10rem]" />
       
