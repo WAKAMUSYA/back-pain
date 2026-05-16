@@ -110,6 +110,7 @@ export default function Hero() {
                     fill
                     className="object-cover"
                     priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent" />
                   
@@ -135,24 +136,6 @@ export default function Hero() {
                 />
               ))}
             </div>
-
-            {/* Floating stats or labels */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 hidden md:block z-10"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-500 font-bold text-xl">
-                  3
-                </div>
-                <div>
-                  <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Experience</p>
-                  <p className="text-sm font-bold text-slate-800">重度腰痛からの復帰回数</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
