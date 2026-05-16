@@ -68,7 +68,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden relative z-[60] p-2 text-slate-600 hover:text-sky-600 transition-colors"
+          className="lg:hidden relative z-[110] p-2 text-slate-600 hover:text-sky-600 transition-colors"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -84,7 +84,7 @@ export default function Header() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsOpen(false)}
-                className="fixed inset-0 bg-slate-900/20 backdrop-blur-sm lg:hidden z-40"
+                className="fixed inset-0 bg-slate-900/40 backdrop-blur-md lg:hidden z-[90]"
               />
               
               {/* Menu Content */}
@@ -93,34 +93,40 @@ export default function Header() {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="fixed top-0 right-0 w-full max-w-sm h-full bg-white shadow-2xl lg:hidden z-50 pt-28 pb-10 px-8 overflow-y-auto"
+                className="fixed top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl lg:hidden z-[100] flex flex-col pt-24"
               >
-                <div className="flex flex-col gap-2">
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">探索する</p>
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`group flex items-center justify-between py-5 border-b border-slate-50 text-xl font-bold transition-all ${
-                        pathname === link.href ? 'text-sky-600' : 'text-slate-800 hover:text-sky-600'
-                      }`}
-                    >
-                      {link.label}
-                      <ChevronRight size={20} className="text-slate-300 group-hover:text-sky-400 transition-colors" />
-                    </Link>
-                  ))}
-                  <div className="mt-8">
-                    <Link 
-                      href="/#self-check" 
-                      className="flex items-center justify-center w-full py-5 rounded-2xl bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 transition-all shadow-lg"
-                    >
-                      セルフチェックを始める
-                    </Link>
+                <div className="flex-grow overflow-y-auto px-8 pb-10">
+                  <div className="flex flex-col gap-1">
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-6">Menu</p>
+                    {navLinks.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className={`group flex items-center justify-between py-5 border-b border-slate-50 text-xl font-bold transition-all ${
+                          pathname === link.href ? 'text-sky-600' : 'text-slate-900 hover:text-sky-600'
+                        }`}
+                      >
+                        {link.label}
+                        <ChevronRight size={22} className={`transition-transform group-hover:translate-x-1 ${pathname === link.href ? 'text-sky-400' : 'text-slate-300'}`} />
+                      </Link>
+                    ))}
+                    <div className="mt-8">
+                      <Link 
+                        href="/#self-check" 
+                        className="flex items-center justify-center w-full py-5 rounded-2xl bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 transition-all shadow-xl shadow-slate-200"
+                      >
+                        セルフチェック
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-auto pt-12 text-center">
-                  <p className="text-xs text-slate-400">© 2024 腰痛からの復帰を目指す</p>
+                <div className="p-8 bg-slate-50 border-t border-slate-100">
+                  <div className="flex items-center gap-3 text-slate-800 font-bold mb-2">
+                    <Microscope size={20} className="text-sky-500" />
+                    <span>腰痛からの復帰</span>
+                  </div>
+                  <p className="text-xs text-slate-400">© 2024 Recovery from Back Pain</p>
                 </div>
               </motion.div>
             </>
