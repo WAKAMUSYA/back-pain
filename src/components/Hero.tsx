@@ -1,11 +1,39 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ArrowDown } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+const heroImages = [
+  {
+    src: '/images/hero-pilates.png',
+    alt: 'Pilates Recovery',
+    label: 'Pilates',
+  },
+  {
+    src: '/images/hero-golf.png',
+    alt: 'Golf Performance',
+    label: 'Golf',
+  },
+  {
+    src: '/images/hero-training.png',
+    alt: 'Strength Training',
+    label: 'Training',
+  },
+];
+
 export default function Hero() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative overflow-hidden pt-20 pb-20 md:pt-32 md:pb-32 bg-white">
       {/* Background decoration */}
@@ -66,23 +94,54 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] md:aspect-square rounded-[3rem] overflow-hidden shadow-2xl shadow-sky-900/10 border-8 border-white">
-              <Image
-                src="/images/hero.png"
-                alt="Back Pain Recovery Movement"
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent" />
+            <div className="relative aspect-[4/5] md:aspect-square rounded-[3rem] overflow-hidden shadow-2xl shadow-sky-900/10 border-8 border-white bg-slate-100">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImage}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={heroImages[currentImage].src}
+                    alt={heroImages[currentImage].alt}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent" />
+                  
+                  {/* Category Label */}
+                  <div className="absolute bottom-8 right-8">
+                    <span className="px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white text-[10px] font-bold tracking-widest uppercase">
+                      {heroImages[currentImage].label}
+                    </span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
             
+            {/* Carousel Indicators */}
+            <div className="absolute -bottom-4 right-12 flex gap-2">
+              {heroImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentImage(i)}
+                  className={`w-12 h-1.5 rounded-full transition-all ${
+                    i === currentImage ? 'bg-sky-500 w-20' : 'bg-slate-200 hover:bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
+
             {/* Floating stats or labels */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 hidden md:block"
+              className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl border border-slate-50 hidden md:block z-10"
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-500 font-bold text-xl">
