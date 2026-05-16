@@ -31,9 +31,9 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group relative z-[110]">
+    <header className="fixed top-0 w-full z-50 bg-white border-b border-slate-100">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-[110]">
+        <Link href="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-sky-600 group-hover:bg-sky-100 transition-colors">
             <Microscope size={24} />
           </div>
@@ -66,55 +66,54 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden relative z-[110] p-2 text-slate-600 hover:text-sky-600 transition-colors"
+          className="lg:hidden p-2 text-slate-600 hover:text-sky-600 transition-colors"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-
-        {/* Mobile Navigation Overlay */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-white lg:hidden z-[100] flex flex-col"
-            >
-              <div className="flex-grow flex flex-col justify-center px-8">
-                <nav className="flex flex-col gap-2">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`flex items-center justify-between py-6 border-b border-slate-50 text-2xl font-bold transition-all ${
-                        pathname === link.href ? 'text-sky-600' : 'text-slate-900'
-                      }`}
-                    >
-                      {link.label}
-                      <ChevronRight size={24} className={pathname === link.href ? 'text-sky-400' : 'text-slate-300'} />
-                    </Link>
-                  ))}
-                  <div className="mt-12">
-                    <Link 
-                      href="/#self-check" 
-                      className="flex items-center justify-center w-full py-5 rounded-2xl bg-slate-900 text-white font-bold text-xl shadow-xl shadow-slate-200"
-                    >
-                      セルフチェック
-                    </Link>
-                  </div>
-                </nav>
-              </div>
-
-              <div className="p-10 text-center bg-slate-50 border-t border-slate-100">
-                <p className="text-sm font-bold text-slate-800 mb-1">腰痛からの復帰を目指す</p>
-                <p className="text-xs text-slate-400 uppercase tracking-widest">Recovery from Back Pain</p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
+
+      {/* Mobile Navigation Overlay - Outside the centered container */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-white lg:hidden z-[100] flex flex-col pt-20"
+          >
+            <div className="flex-grow flex flex-col justify-center items-center px-8">
+              <nav className="flex flex-col gap-4 w-full max-w-xs">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`flex items-center justify-center py-6 border-b border-slate-50 text-2xl font-bold transition-all text-center ${
+                      pathname === link.href ? 'text-sky-600' : 'text-slate-900'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <div className="mt-12 w-full">
+                  <Link 
+                    href="/#self-check" 
+                    className="flex items-center justify-center w-full py-5 rounded-2xl bg-slate-900 text-white font-bold text-xl shadow-xl shadow-slate-200"
+                  >
+                    セルフチェック
+                  </Link>
+                </div>
+              </nav>
+            </div>
+
+            <div className="p-12 text-center bg-slate-50 border-t border-slate-100">
+              <p className="text-sm font-bold text-slate-800 mb-1">腰痛からの復帰を目指す</p>
+              <p className="text-xs text-slate-400 uppercase tracking-widest">Recovery from Back Pain</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
