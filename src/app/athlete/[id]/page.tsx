@@ -137,6 +137,7 @@ const articles = {
 
 import Link from 'next/link';
 import { ChevronRight, PlayCircle } from 'lucide-react';
+import RelatedNotes from '@/components/RelatedNotes';
 
 export default async function AthleteArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -220,6 +221,8 @@ export default async function AthleteArticlePage({ params }: { params: Promise<{
           </div>
         </div>
       )}
+
+      <RelatedNotes limit={3} />
     </div>
   );
 }

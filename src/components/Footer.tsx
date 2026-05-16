@@ -22,7 +22,7 @@ export default function Footer() {
             <h3 className="font-bold text-slate-800 mb-6">探究コンテンツ</h3>
             <ul className="space-y-4 text-sm text-slate-500">
               <li><Link href="/knowledge" className="hover:text-sky-600 transition-colors">知識図鑑</Link></li>
-              <li><Link href="/movements" className="hover:text-sky-600 transition-colors">動作図鑑</Link></li>
+              <li><Link href="/movements" className="hover:text-sky-600 transition-colors">リハビリ図鑑</Link></li>
               <li><Link href="/athlete" className="hover:text-sky-600 transition-colors">アスリート復帰</Link></li>
               <li><Link href="/notes" className="hover:text-sky-600 transition-colors">研究ノート</Link></li>
               <li><Link href="/glossary" className="hover:text-sky-600 transition-colors">腰痛用語辞典</Link></li>

@@ -199,7 +199,7 @@ export default async function MovementDetailPage({ params }: { params: Promise<{
     <div className="max-w-4xl mx-auto px-6 py-12 md:py-20">
       <Breadcrumbs
         items={[
-          { label: 'リカバリー動作図鑑', href: '/movements' },
+          { label: 'リハビリ図鑑', href: '/movements' },
           { label: movement.title },
         ]}
       />

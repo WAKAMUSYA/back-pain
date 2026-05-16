@@ -1,13 +1,11 @@
-'use client';
-
-import { useState } from 'react';
-import { Activity, Trophy, Dumbbell, Zap, Search, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
+import { Activity, Trophy, Dumbbell, Zap } from 'lucide-react';
+import AthleteList from '@/components/AthleteList';
+import RelatedNotes from '@/components/RelatedNotes';
 
 const athleteSections = [
   {
     title: 'BIG3への復帰',
-    icon: Dumbbell,
+    iconName: 'Dumbbell',
     items: [
       { id: 'squat', title: 'スクワットと腰痛', description: 'ボトムでの違和感から脱却する。' },
       { id: 'deadlift', title: 'デッドリフト再開', description: '高重量トレーニングへの復帰戦略。' },
@@ -16,7 +14,7 @@ const athleteSections = [
   },
   {
     title: '競技パフォーマンス',
-    icon: Trophy,
+    iconName: 'Trophy',
     items: [
       { id: 'jump', title: 'ジャンプ動作の着地', description: '衝撃を吸収する体幹の連動。' },
       { id: 'dash', title: 'ダッシュと切り返し', description: '回旋動作での腰の安定性。' },
@@ -26,7 +24,7 @@ const athleteSections = [
   },
   {
     title: 'スポーツ医科学・トレーニング',
-    icon: Activity,
+    iconName: 'Activity',
     items: [
       { id: 'eccentric', title: 'エキセントリック収縮', description: '減速動作で腰が壊れるメカニズムと対策。' },
       { id: 'valsalva', title: 'バルサルバ法と限界重量', description: '高重量を挙げる呼吸法とIAPの使い分け。' },
@@ -36,16 +34,6 @@ const athleteSections = [
 ];
 
 export default function AthletePage() {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const filteredSections = athleteSections.map(section => ({
-    ...section,
-    items: section.items.filter(item => 
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-  })).filter(section => section.items.length > 0);
-
   return (
     <div className="bg-slate-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
@@ -65,59 +53,9 @@ export default function AthletePage() {
           </div>
         </div>
 
-        <div className="mb-12 flex justify-end">
-          <div className="relative group w-full md:w-80">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-sky-500 transition-colors" size={20} />
-            <input
-              type="text"
-              placeholder="競技別ガイドを検索..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-6 py-4 bg-white border border-slate-200 rounded-2xl outline-none focus:border-sky-500 focus:ring-4 focus:ring-sky-500/5 transition-all"
-            />
-          </div>
-        </div>
+        <AthleteList sections={athleteSections} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {filteredSections.length > 0 ? (
-            filteredSections.map((section) => (
-              <div key={section.title}>
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-sky-500">
-                    <section.icon size={24} />
-                  </div>
-                  <h2 className="text-2xl font-bold text-slate-800">{section.title}</h2>
-                </div>
-                
-                <div className="space-y-4">
-                  {section.items.map((item) => (
-                    <Link
-                      key={item.id}
-                      href={`/athlete/${item.id}`}
-                      className="group flex items-center justify-between p-8 bg-white rounded-3xl border border-slate-100 hover:border-sky-200 hover:shadow-xl hover:shadow-sky-900/5 transition-all"
-                    >
-                      <div>
-                        <h3 className="text-lg font-bold text-slate-800 group-hover:text-sky-600 transition-colors mb-1">
-                          {item.title}
-                        </h3>
-                        <p className="text-slate-500 text-sm">
-                          {item.description}
-                        </p>
-                      </div>
-                      <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-sky-50 group-hover:text-sky-500 transition-all">
-                        <ChevronRight size={20} />
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="col-span-full text-center py-20 bg-white rounded-[3rem] border border-dashed border-slate-200">
-              <p className="text-slate-400 font-medium">該当するガイドが見つかりませんでした。</p>
-            </div>
-          )}
-        </div>
+        <RelatedNotes />
       </div>
     </div>
   );

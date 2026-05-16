@@ -60,13 +60,13 @@ export default function MovementsPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 md:py-24">
-      <Breadcrumbs items={[{ label: 'リカバリー動作図鑑' }]} />
+      <Breadcrumbs items={[{ label: 'リハビリ図鑑' }]} />
 
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
         <div>
           <h1 className="text-4xl font-bold text-slate-900 mb-6 flex items-center gap-4">
             <PlayCircle className="text-emerald-500" size={36} />
-            リカバリー動作図鑑
+            リハビリ図鑑
           </h1>
           <p className="text-lg text-slate-500 max-w-2xl leading-relaxed">
             「今のあなた」に最適な動作を選んでください。無理にレベルを上げる必要はありません。

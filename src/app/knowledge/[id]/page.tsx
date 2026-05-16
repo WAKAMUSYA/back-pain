@@ -1,6 +1,7 @@
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { ShieldCheck, AlertCircle, HelpCircle, Lightbulb, TrendingUp } from 'lucide-react';
 import { notFound } from 'next/navigation';
+import RelatedNotes from '@/components/RelatedNotes';
 
 const articles = {
   hernia: {
@@ -242,6 +243,7 @@ export default async function KnowledgeArticlePage({ params }: { params: Promise
         </div>
       )}
 
+      <RelatedNotes limit={3} />
     </div>
   );
 }

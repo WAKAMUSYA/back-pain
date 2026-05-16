@@ -17,7 +17,7 @@ export default function Header() {
         
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
           <Link href="/knowledge" className="hover:text-sky-600 transition-colors">知識図鑑</Link>
-          <Link href="/movements" className="hover:text-sky-600 transition-colors">動作図鑑</Link>
+          <Link href="/movements" className="hover:text-sky-600 transition-colors">リハビリ図鑑</Link>
           <Link href="/athlete" className="hover:text-sky-600 transition-colors">アスリート復帰</Link>
           <Link href="/notes" className="hover:text-sky-600 transition-colors">研究ノート</Link>
           <Link href="/glossary" className="hover:text-sky-600 transition-colors">用語辞典</Link>
