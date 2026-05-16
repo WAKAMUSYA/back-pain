@@ -62,29 +62,6 @@ export default function AboutPage() {
             あなたの「復帰への道のり」の、ひとつの道標になれば幸いです。
           </p>
         </section>
-
-        <div className="mt-24 pt-16 border-t border-slate-100">
-          <div className="bg-slate-50 rounded-[3rem] p-12 text-center">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">活動を支援する</h2>
-            <p className="text-lg text-slate-600 leading-relaxed mb-10 max-w-2xl mx-auto">
-              このサイトは研究・実践・経験をもとに運営しています。<br />
-              もし役に立ったら、今後の活動の支援をしていただけると嬉しいです。
-            </p>
-            <div className="flex flex-col items-center gap-6">
-              <a 
-                href="https://donate.stripe.com/dRmeV7cQ1cQE61M7A797G00"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-10 py-5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition-all shadow-xl shadow-slate-200 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                支援を送る
-              </a>
-              <p className="text-xs text-slate-400 font-bold tracking-widest uppercase">
-                by STRENGTH ARTS
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

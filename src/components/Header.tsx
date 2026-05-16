@@ -59,7 +59,7 @@ export default function Header() {
             </Link>
           ))}
           <Link 
-            href="https://donate.stripe.com/dRmeV7cQ1cQE61M7A797G00"
+            href="https://donate.stripe.com/dRm7sF9DPg2Qcqaf2z97G01"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-rose-500 hover:text-rose-600 transition-colors"
@@ -114,7 +114,7 @@ export default function Header() {
                   </Link>
                   <div className="mt-4 flex flex-col items-center">
                     <Link 
-                      href="https://donate.stripe.com/dRmeV7cQ1cQE61M7A797G00"
+                      href="https://donate.stripe.com/dRm7sF9DPg2Qcqaf2z97G01"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 text-rose-500 font-bold"

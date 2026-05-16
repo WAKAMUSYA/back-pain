@@ -21,7 +21,7 @@ export default function Footer() {
             </p>
           </div>
           <Link 
-            href="https://donate.stripe.com/dRmeV7cQ1cQE61M7A797G00"
+            href="https://donate.stripe.com/dRm7sF9DPg2Qcqaf2z97G01"
             target="_blank"
             rel="noopener noreferrer"
             className="whitespace-nowrap px-10 py-5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition-all shadow-xl shadow-slate-200 flex items-center gap-2 group hover:scale-[1.02] active:scale-[0.98]"
