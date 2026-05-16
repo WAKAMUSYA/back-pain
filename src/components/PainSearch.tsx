@@ -33,7 +33,7 @@ export default function PainSearch() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.05 }}
-              whileHover={{ y: -5, shadow: '0 10px 20px -10px rgba(0,0,0,0.1)' }}
+              whileHover={{ y: -5, boxShadow: '0 10px 20px -10px rgba(0,0,0,0.1)' }}
               className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:border-sky-200 transition-all text-center flex flex-col items-center gap-4 group"
             >
               <span className="text-3xl group-hover:scale-110 transition-transform">{type.icon}</span>

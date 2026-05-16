@@ -56,7 +56,7 @@ export default function PopularContent() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -5, shadow: '0 10px 30px -15px rgba(0,0,0,0.1)' }}
+              whileHover={{ y: -5, boxShadow: '0 10px 30px -15px rgba(0,0,0,0.1)' }}
               className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm transition-all flex flex-col h-full cursor-pointer"
             >
               <div className={`w-12 h-12 rounded-xl ${item.color} flex items-center justify-center ${item.iconColor} mb-6`}>
