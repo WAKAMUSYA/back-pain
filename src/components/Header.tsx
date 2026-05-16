@@ -18,12 +18,10 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  // Prevent scroll when menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -33,9 +31,9 @@ export default function Header() {
   }, [isOpen]);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group relative z-[60]">
+        <Link href="/" className="flex items-center gap-2 group relative z-[110]">
           <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-sky-600 group-hover:bg-sky-100 transition-colors">
             <Microscope size={24} />
           </div>
@@ -77,59 +75,43 @@ export default function Header() {
         {/* Mobile Navigation Overlay */}
         <AnimatePresence>
           {isOpen && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setIsOpen(false)}
-                className="fixed inset-0 bg-slate-900/40 backdrop-blur-md lg:hidden z-[90]"
-              />
-              
-              {/* Menu Content */}
-              <motion.div
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '100%' }}
-                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="fixed top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl lg:hidden z-[100] flex flex-col pt-24"
-              >
-                <div className="flex-grow overflow-y-auto px-8 pb-10">
-                  <div className="flex flex-col gap-1">
-                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em] mb-6">Menu</p>
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className={`group flex items-center justify-between py-5 border-b border-slate-50 text-xl font-bold transition-all ${
-                          pathname === link.href ? 'text-sky-600' : 'text-slate-900 hover:text-sky-600'
-                        }`}
-                      >
-                        {link.label}
-                        <ChevronRight size={22} className={`transition-transform group-hover:translate-x-1 ${pathname === link.href ? 'text-sky-400' : 'text-slate-300'}`} />
-                      </Link>
-                    ))}
-                    <div className="mt-8">
-                      <Link 
-                        href="/#self-check" 
-                        className="flex items-center justify-center w-full py-5 rounded-2xl bg-slate-900 text-white font-bold text-lg hover:bg-slate-800 transition-all shadow-xl shadow-slate-200"
-                      >
-                        セルフチェック
-                      </Link>
-                    </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-white lg:hidden z-[100] flex flex-col"
+            >
+              <div className="flex-grow flex flex-col justify-center px-8">
+                <nav className="flex flex-col gap-2">
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`flex items-center justify-between py-6 border-b border-slate-50 text-2xl font-bold transition-all ${
+                        pathname === link.href ? 'text-sky-600' : 'text-slate-900'
+                      }`}
+                    >
+                      {link.label}
+                      <ChevronRight size={24} className={pathname === link.href ? 'text-sky-400' : 'text-slate-300'} />
+                    </Link>
+                  ))}
+                  <div className="mt-12">
+                    <Link 
+                      href="/#self-check" 
+                      className="flex items-center justify-center w-full py-5 rounded-2xl bg-slate-900 text-white font-bold text-xl shadow-xl shadow-slate-200"
+                    >
+                      セルフチェック
+                    </Link>
                   </div>
-                </div>
+                </nav>
+              </div>
 
-                <div className="p-8 bg-slate-50 border-t border-slate-100">
-                  <div className="flex items-center gap-3 text-slate-800 font-bold mb-2">
-                    <Microscope size={20} className="text-sky-500" />
-                    <span>腰痛からの復帰</span>
-                  </div>
-                  <p className="text-xs text-slate-400">© 2024 Recovery from Back Pain</p>
-                </div>
-              </motion.div>
-            </>
+              <div className="p-10 text-center bg-slate-50 border-t border-slate-100">
+                <p className="text-sm font-bold text-slate-800 mb-1">腰痛からの復帰を目指す</p>
+                <p className="text-xs text-slate-400 uppercase tracking-widest">Recovery from Back Pain</p>
+              </div>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
