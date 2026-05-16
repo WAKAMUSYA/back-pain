@@ -47,7 +47,7 @@ export default function TargetSelection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              className={`group relative p-10 rounded-3xl border border-slate-100 bg-white shadow-sm ${group.hoverBorder} transition-all duration-500 overflow-hidden`}
+              className={`group relative p-10 rounded-3xl border border-slate-100 bg-white shadow-sm ${group.hoverBorder} transition-colors duration-500 overflow-hidden transform-gpu`}
             >
               <div className={`absolute top-0 right-0 w-48 h-48 ${group.color} rounded-bl-full opacity-40 -mr-12 -mt-12 transition-transform group-hover:scale-110`} />
               

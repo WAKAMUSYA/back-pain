@@ -94,8 +94,8 @@ export default function SelfCheck() {
 
   const containerVariants = {
     hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+    exit: { opacity: 0, x: -20, transition: { duration: 0.3 } },
   };
 
   const result = step === 'result' ? getResult() : null;
@@ -141,7 +141,7 @@ export default function SelfCheck() {
                 </p>
                 <button
                   onClick={() => setStep('q1_redflags')}
-                  className="px-10 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-lg"
+                  className="px-10 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-slate-800 transition-colors duration-200 shadow-lg"
                 >
                   開始する
                 </button>
@@ -155,13 +155,13 @@ export default function SelfCheck() {
                   足のしびれ、麻痺、排尿の異常などはありますか？
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
-                  <button onClick={() => nextStep('q1_redflags', 'result', { redflags: true })} className="p-6 bg-white border border-rose-100 rounded-2xl hover:border-rose-300 hover:bg-rose-50 transition-all text-left flex items-center gap-4 group">
+                  <button onClick={() => nextStep('q1_redflags', 'result', { redflags: true })} className="p-6 bg-white border border-rose-100 rounded-2xl hover:border-rose-300 hover:bg-rose-50 transition-colors duration-200 text-left flex items-center gap-4 group">
                     <div className="w-10 h-10 bg-rose-100 rounded-xl flex items-center justify-center text-rose-500 group-hover:scale-110 transition-transform">
                       <AlertCircle size={24} />
                     </div>
                     <span className="font-bold text-slate-700">はい、あります</span>
                   </button>
-                  <button onClick={() => nextStep('q1_redflags', 'q2_duration', { redflags: false })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all text-left flex items-center gap-4 group">
+                  <button onClick={() => nextStep('q1_redflags', 'q2_duration', { redflags: false })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 text-left flex items-center gap-4 group">
                     <div className="w-10 h-10 bg-sky-100 rounded-xl flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform">
                       <ChevronRight size={24} />
                     </div>
@@ -178,7 +178,7 @@ export default function SelfCheck() {
                   その痛みはいつから続いていますか？
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
-                  <button onClick={() => nextStep('q2_duration', 'q3_pattern', { duration: 'acute' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all text-left flex items-center gap-4 group">
+                  <button onClick={() => nextStep('q2_duration', 'q3_pattern', { duration: 'acute' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 text-left flex items-center gap-4 group">
                     <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 group-hover:scale-110 transition-transform">
                       <Clock size={24} />
                     </div>
@@ -187,7 +187,7 @@ export default function SelfCheck() {
                       <span className="text-[10px] text-slate-400">急に痛くなった・ぎっくり腰など</span>
                     </div>
                   </button>
-                  <button onClick={() => nextStep('q2_duration', 'q3_pattern', { duration: 'chronic' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all text-left flex items-center gap-4 group">
+                  <button onClick={() => nextStep('q2_duration', 'q3_pattern', { duration: 'chronic' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 text-left flex items-center gap-4 group">
                     <div className="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 group-hover:scale-110 transition-transform">
                       <RefreshCcw size={24} />
                     </div>
@@ -207,15 +207,15 @@ export default function SelfCheck() {
                   一番つらい、または不安な状況はどれですか？
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-                  <button onClick={() => nextStep('q3_pattern', 'q4_fear', { pattern: 'morning' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all flex flex-col items-center gap-4 group">
+                  <button onClick={() => nextStep('q3_pattern', 'q4_fear', { pattern: 'morning' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 flex flex-col items-center gap-4 group">
                     <Clock size={32} className="text-slate-300 group-hover:text-sky-500" />
                     <span className="font-bold text-slate-700 text-sm">朝、起きる時</span>
                   </button>
-                  <button onClick={() => nextStep('q3_pattern', 'q4_fear', { pattern: 'sitting' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all flex flex-col items-center gap-4 group">
+                  <button onClick={() => nextStep('q3_pattern', 'q4_fear', { pattern: 'sitting' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 flex flex-col items-center gap-4 group">
                     <Home size={32} className="text-slate-300 group-hover:text-sky-500" />
                     <span className="font-bold text-slate-700 text-sm">座っている時</span>
                   </button>
-                  <button onClick={() => nextStep('q3_pattern', 'q4_fear', { pattern: 'moving' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all flex flex-col items-center gap-4 group">
+                  <button onClick={() => nextStep('q3_pattern', 'q4_fear', { pattern: 'moving' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 flex flex-col items-center gap-4 group">
                     <Activity size={32} className="text-slate-300 group-hover:text-sky-500" />
                     <span className="font-bold text-slate-700 text-sm">動いた時</span>
                   </button>
@@ -230,11 +230,11 @@ export default function SelfCheck() {
                   「動くと腰が壊れるのではないか」という恐怖がありますか？
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
-                  <button onClick={() => nextStep('q4_fear', 'q5_goal', { fear: true })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all text-left flex items-center gap-4 group">
+                  <button onClick={() => nextStep('q4_fear', 'q5_goal', { fear: true })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 text-left flex items-center gap-4 group">
                     <Heart size={24} className="text-rose-400" />
                     <span className="font-bold text-slate-700">はい、怖いです</span>
                   </button>
-                  <button onClick={() => nextStep('q4_fear', 'q5_goal', { fear: false })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all text-left flex items-center gap-4 group">
+                  <button onClick={() => nextStep('q4_fear', 'q5_goal', { fear: false })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 text-left flex items-center gap-4 group">
                     <Activity size={24} className="text-sky-400" />
                     <span className="font-bold text-slate-700">いいえ、それほどでもない</span>
                   </button>
@@ -249,14 +249,14 @@ export default function SelfCheck() {
                   最終的にどのような状態を目指したいですか？
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
-                  <button onClick={() => nextStep('q5_goal', 'result', { goal: 'life' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all text-left flex items-center gap-4 group">
+                  <button onClick={() => nextStep('q5_goal', 'result', { goal: 'life' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 text-left flex items-center gap-4 group">
                     <Home size={24} className="text-emerald-500" />
                     <div>
                       <span className="font-bold text-slate-700 block">日常生活の安定</span>
                       <span className="text-[10px] text-slate-400">不安なく日常を送りたい</span>
                     </div>
                   </button>
-                  <button onClick={() => nextStep('q5_goal', 'result', { goal: 'sport' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-all text-left flex items-center gap-4 group">
+                  <button onClick={() => nextStep('q5_goal', 'result', { goal: 'sport' })} className="p-6 bg-white border border-slate-200 rounded-2xl hover:border-sky-300 hover:bg-sky-50 transition-colors duration-200 text-left flex items-center gap-4 group">
                     <Dumbbell size={24} className="text-sky-500" />
                     <div>
                       <span className="font-bold text-slate-700 block">競技・筋トレへの復帰</span>
@@ -280,7 +280,7 @@ export default function SelfCheck() {
                   <button onClick={() => setStep('start')} className="px-8 py-4 text-slate-400 font-bold hover:text-slate-600 transition-colors order-2 sm:order-1">
                     やり直す
                   </button>
-                  <Link href={result.link} className={`px-10 py-4 ${result.btnColor} text-white rounded-2xl font-bold hover:opacity-90 transition-all shadow-lg order-1 sm:order-2`}>
+                  <Link href={result.link} className={`px-10 py-4 ${result.btnColor} text-white rounded-2xl font-bold hover:opacity-90 transition-opacity duration-200 shadow-lg order-1 sm:order-2`}>
                     {result.linkText}
                   </Link>
                 </div>

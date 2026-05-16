@@ -49,6 +49,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="transform-gpu"
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 text-xs font-bold tracking-widest text-sky-600 uppercase bg-sky-50 rounded-full">
               <span className="w-2 h-2 bg-sky-500 rounded-full animate-pulse" />
@@ -71,11 +72,11 @@ export default function Hero() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/knowledge" className="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all shadow-xl shadow-slate-200 flex items-center justify-center gap-2 group">
+              <Link href="/knowledge" className="px-10 py-5 bg-slate-900 text-white rounded-2xl font-bold text-lg hover:bg-slate-800 transition-colors duration-200 shadow-xl shadow-slate-200 flex items-center justify-center gap-2 group">
                 腰痛を学ぶ
                 <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/recovery" className="px-10 py-5 bg-white text-slate-900 border border-slate-200 rounded-2xl font-bold text-lg hover:border-slate-400 transition-all flex items-center justify-center gap-2">
+              <Link href="/recovery" className="px-10 py-5 bg-white text-slate-900 border border-slate-200 rounded-2xl font-bold text-lg hover:border-slate-400 transition-colors duration-200 flex items-center justify-center gap-2">
                 復帰の歩み
               </Link>
             </div>
@@ -96,7 +97,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative"
+            className="relative transform-gpu"
           >
             <div className="relative aspect-[4/5] md:aspect-square rounded-[3rem] overflow-hidden shadow-2xl shadow-sky-900/10 border-8 border-white bg-slate-100">
               <AnimatePresence mode="wait">
