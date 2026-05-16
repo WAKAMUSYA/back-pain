@@ -2,15 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
+import Link from 'next/link';
 
 const painTypes = [
-  { label: '朝起きると痛い', icon: '🌅' },
-  { label: '前屈で痛い', icon: '🙇‍♂️' },
-  { label: '反ると痛い', icon: '🙆‍♀️' },
-  { label: '座ると痛い', icon: '🪑' },
-  { label: 'スクワット', icon: '🏋️‍♂️' },
-  { label: 'デッドリフト', icon: '🏗️' },
-  { label: 'スポーツ', icon: '🏃‍♂️' },
+  { label: '朝起きると痛い', icon: '🌅', href: '/notes/morning' },
+  { label: '前屈で痛い', icon: '🙇‍♂️', href: '/notes/flexibility' },
+  { label: '反ると痛い', icon: '🙆‍♀️', href: '/notes/extension' },
+  { label: '座ると痛い', icon: '🪑', href: '/notes/sitting' },
+  { label: 'スクワット', icon: '🏋️‍♂️', href: '/notes/squat' },
+  { label: 'デッドリフト', icon: '🏗️', href: '/notes/deadlift' },
+  { label: 'スポーツ', icon: '🏃‍♂️', href: '/notes/sports' },
 ];
 
 export default function PainSearch() {
@@ -27,20 +28,21 @@ export default function PainSearch() {
 
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
           {painTypes.map((type, i) => (
-            <motion.button
-              key={type.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              whileHover={{ y: -5, boxShadow: '0 10px 20px -10px rgba(0,0,0,0.1)' }}
-              className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:border-sky-200 transition-all text-center flex flex-col items-center gap-4 group"
-            >
-              <span className="text-3xl group-hover:scale-110 transition-transform">{type.icon}</span>
-              <span className="text-sm font-bold text-slate-700 group-hover:text-sky-600 transition-colors leading-tight">
-                {type.label}
-              </span>
-            </motion.button>
+            <Link key={type.label} href={type.href} className="block no-underline">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
+                whileHover={{ y: -5, boxShadow: '0 10px 20px -10px rgba(0,0,0,0.1)' }}
+                className="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:bg-white hover:border-sky-200 transition-all text-center flex flex-col items-center gap-4 group h-full cursor-pointer"
+              >
+                <span className="text-3xl group-hover:scale-110 transition-transform">{type.icon}</span>
+                <span className="text-sm font-bold text-slate-700 group-hover:text-sky-600 transition-colors leading-tight">
+                  {type.label}
+                </span>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
