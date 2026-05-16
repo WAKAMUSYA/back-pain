@@ -1,10 +1,35 @@
 import Link from 'next/link';
-import { Microscope } from 'lucide-react';
+import { Microscope, Heart } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-slate-50 border-t border-slate-200 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Support Section */}
+        <div className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-sm mb-20 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex-1 text-center md:text-left">
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 flex items-center justify-center md:justify-start gap-2">
+              <Heart className="text-rose-500 fill-rose-500" size={24} />
+              活動を支援する
+            </h3>
+            <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+              このサイトは研究・実践・経験をもとに運営しています。<br className="hidden md:block" />
+              もし役に立ったら、今後の活動の支援をしていただけると嬉しいです。
+            </p>
+            <p className="text-[10px] text-slate-400 mt-4 font-bold tracking-widest uppercase">
+              Operated by STRENGTH ARTS
+            </p>
+          </div>
+          <Link 
+            href="https://donate.stripe.com/dRmeV7cQ1cQE61M7A797G00"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="whitespace-nowrap px-10 py-5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition-all shadow-xl shadow-slate-200 flex items-center gap-2 group hover:scale-[1.02] active:scale-[0.98]"
+          >
+            支援を送る
+          </Link>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-6">
@@ -48,7 +73,7 @@ export default function Footer() {
             </p>
           </div>
           <p className="text-xs text-slate-400 whitespace-nowrap">
-            &copy; {new Date().getFullYear()} 腰痛からの復帰を目指す.
+            &copy; {new Date().getFullYear()} STRENGTH ARTS / 腰痛からの復帰を目指す.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <span className="text-xs text-slate-400 italic">Exploring the science of movement.</span>

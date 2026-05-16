@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Microscope, Menu, X, ChevronRight } from 'lucide-react';
+import { Microscope, Menu, X, ChevronRight, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
@@ -58,6 +58,15 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <Link 
+            href="https://donate.stripe.com/dRmeV7cQ1cQE61M7A797G00"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-rose-500 hover:text-rose-600 transition-colors"
+          >
+            <Heart size={18} fill="currentColor" />
+            <span>Support</span>
+          </Link>
           <Link href="/#self-check" className="px-5 py-2.5 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-sm">
             セルフチェック
           </Link>
@@ -103,13 +112,29 @@ export default function Header() {
                   >
                     セルフチェック
                   </Link>
+                  <div className="mt-4 flex flex-col items-center">
+                    <Link 
+                      href="https://donate.stripe.com/dRmeV7cQ1cQE61M7A797G00"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 text-rose-500 font-bold"
+                    >
+                      <Heart size={20} fill="currentColor" />
+                      活動を支援する
+                    </Link>
+                    <span className="text-[9px] text-rose-400 font-bold tracking-widest uppercase mt-1">
+                      by STRENGTH ARTS
+                    </span>
+                  </div>
                 </div>
               </nav>
             </div>
 
-            <div className="p-12 text-center bg-slate-50 border-t border-slate-100">
-              <p className="text-sm font-bold text-slate-800 mb-1">腰痛からの復帰を目指す</p>
-              <p className="text-xs text-slate-400 uppercase tracking-widest">Recovery from Back Pain</p>
+            <div className="p-10 text-center bg-slate-50 border-t border-slate-100">
+              <p className="text-sm font-bold text-slate-800 mb-1">STRENGTH ARTS</p>
+              <p className="text-[10px] text-slate-400 uppercase tracking-widest leading-tight">
+                腰痛からの復帰を目指す<br />Recovery from Back Pain
+              </p>
             </div>
           </motion.div>
         )}
