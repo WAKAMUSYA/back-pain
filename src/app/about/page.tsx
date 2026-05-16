@@ -1,11 +1,18 @@
-import { User, Quote, ExternalLink, Mail } from 'lucide-react';
+import Image from 'next/image';
+import { Quote, ExternalLink, Mail } from 'lucide-react';
 
 export default function AboutPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-16 md:py-24">
       <div className="flex flex-col md:flex-row gap-12 items-center mb-24">
-        <div className="w-64 h-64 bg-slate-100 rounded-3xl shrink-0 flex items-center justify-center border border-slate-200">
-          <User size={80} className="text-slate-300" />
+        <div className="w-64 h-64 bg-slate-100 rounded-3xl shrink-0 overflow-hidden border border-slate-200 relative">
+          <Image 
+            src="/images/aboutme.png" 
+            alt="About Me" 
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
         <div>
           <h1 className="text-4xl font-bold text-slate-900 mb-6">About Me</h1>
