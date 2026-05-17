@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ClipboardCheck, ChevronRight, RefreshCcw, AlertCircle, Home, Dumbbell, Clock, Activity, Heart } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 type Step = 'start' | 'q1_redflags' | 'q2_duration' | 'q3_pattern' | 'q4_fear' | 'q5_goal' | 'result';
 
@@ -113,10 +114,22 @@ export default function SelfCheck() {
           </p>
         </div>
 
-        <div className="bg-slate-50 rounded-[3rem] p-8 md:p-12 border border-slate-100 min-h-[500px] flex flex-col justify-center relative overflow-hidden">
+        <div className="bg-slate-50/80 rounded-[3rem] p-8 md:p-12 border border-slate-100 min-h-[500px] flex flex-col justify-center relative overflow-hidden backdrop-blur-sm">
+          {/* 背景画像 */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <Image
+              src="/images/sindan.png"
+              alt=""
+              fill
+              className="object-cover opacity-40 grayscale"
+              sizes="(max-width: 896px) 100vw, 896px"
+            />
+            <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px]" />
+          </div>
+
           {/* Progress bar */}
           {step !== 'start' && step !== 'result' && (
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-200">
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-200 z-20">
               <motion.div 
                 className="h-full bg-sky-500 origin-left"
                 initial={{ scaleX: 0 }}
@@ -129,7 +142,8 @@ export default function SelfCheck() {
             </div>
           )}
 
-          <AnimatePresence mode="wait">
+          <div className="relative z-10 w-full">
+            <AnimatePresence mode="wait">
             {step === 'start' && (
               <motion.div key="start" variants={containerVariants} initial="hidden" animate="visible" exit="exit" className="text-center">
                 <div className="w-20 h-20 bg-white rounded-3xl flex items-center justify-center text-sky-500 mx-auto mb-8 shadow-sm">
@@ -286,7 +300,8 @@ export default function SelfCheck() {
                 </div>
               </motion.div>
             )}
-          </AnimatePresence>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

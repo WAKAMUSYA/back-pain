@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Microscope, Menu, X, ChevronRight, Heart } from 'lucide-react';
+import { Menu, X, ChevronRight, Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
+import iconImg from '@/app/icon.png';
 
 const navLinks = [
   { href: '/knowledge', label: '知識図鑑' },
@@ -33,9 +35,14 @@ export default function Header() {
   return (
     <header className="fixed top-0 w-full z-50 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative z-[110]">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center text-sky-600 group-hover:bg-sky-100 transition-colors">
-            <Microscope size={24} />
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-xl overflow-hidden shadow-sm transition-transform group-hover:scale-105 bg-white border border-slate-100 relative">
+            <Image 
+              src={iconImg} 
+              alt="腰痛からの復帰" 
+              fill
+              className="object-cover" 
+            />
           </div>
           <div>
             <h1 className="font-bold text-lg md:text-xl tracking-tight text-slate-800 leading-tight">
